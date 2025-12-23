@@ -70,6 +70,11 @@ use std::sync::Arc;
 use std::sync::atomic::Ordering;
 use std::{env, ops::ControlFlow};
 
+use mimalloc::MiMalloc;
+
+#[global_allocator]
+static GLOBAL: MiMalloc = MiMalloc;
+
 /// container to hold the options specified within the command line
 #[derive(Default, Debug)]
 struct FishCmdOpts {
